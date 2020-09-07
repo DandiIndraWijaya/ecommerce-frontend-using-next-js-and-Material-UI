@@ -14,6 +14,10 @@ import TypoGraphy from '@material-ui/core/Typography';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import ProductRating from '@common/components/ProductRating';
+
+import {currencyFormatter} from '@utils/currency';
+
 const useStyles = makeStyles((theme) => ({
     container: {
         marginButtom: theme.spacing(8)
@@ -21,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     media: {
         height: 0,
         paddingTop: '56.25%'
+    },
+    productInfo: {
+        marginTop: theme.spacing(2)
     }
 }))
 
@@ -50,6 +57,55 @@ const ProductDetailCard = ({
                     <TypoGraphy variant="h5" component="h1" gutterBottom>
                         {title}
                     </TypoGraphy>
+
+                    <Grid container spacing={1}>
+                        <Grid item xs={6} sm={6}>
+                            <TypoGraphy variant="button" color="secondary">
+                                {currencyFormatter(price)}
+                            </TypoGraphy>
+                        </Grid>
+                        <Grid itme xs={6} sm={6}>
+                            <ProductRating rating={rating} sold={sold} alignRight />
+                        </Grid>
+                    </Grid>
+
+                    <Grid container spacing={1} className={classes.productInfo}>
+                        <Grid container direction="column" justify="center" item xs={3} sm={3}>
+                            <TypoGraphy align="center" variant="overline">
+                                Berat
+                            </TypoGraphy>
+                            <TypoGraphy align="center" variant="button">
+                                {weight}
+                            </TypoGraphy>
+                        </Grid>
+
+                        <Grid container direction="column" justify="center" item xs={3} sm={3}>
+                            <TypoGraphy align="center" variant="overline">
+                                Kondisi
+                            </TypoGraphy>
+                            <TypoGraphy align="center" variant="button">
+                                {condition}
+                            </TypoGraphy>
+                        </Grid>
+
+                        <Grid container direction="column" justify="center" item xs={3} sm={3}>
+                            <TypoGraphy align="center" variant="overline">
+                                Stok
+                            </TypoGraphy>
+                            <TypoGraphy align="center" variant="button">
+                                {quantity}
+                            </TypoGraphy>
+                        </Grid>
+
+                        <Grid container direction="column" justify="center" item xs={3} sm={3}>
+                            <TypoGraphy align="center" variant="overline">
+                                Terjual
+                            </TypoGraphy>
+                            <TypoGraphy align="center" variant="button">
+                                {sold}
+                            </TypoGraphy>
+                        </Grid>
+                    </Grid>
                 </CardContent>
             </Card>
         </div>
