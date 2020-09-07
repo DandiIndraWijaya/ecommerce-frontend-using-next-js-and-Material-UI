@@ -1,5 +1,9 @@
 import Layout from '../modules/common/components/Layout/index'
 ;
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+
+import ProductCard from '../modules/common/components/ProductCard/index';
 
 const HomePage = ({ products }) => {
 
@@ -7,19 +11,28 @@ const HomePage = ({ products }) => {
 
   return (
     <Layout>
-
-      <div>
-      {
-        list.map(list => {
-          return (
-          <p>{ list.name }</p>
-          )
-        })
-      }
-    </div>
+      <Container maxWidth="sm">
+        <Grid container spacing={2}>
+          {
+            list.map(list => {
+              return (
+                <Grid key={list.id} item xs={6} sm={6}>
+                  <ProductCard 
+                    productID={list.id}
+                    img={list.img}
+                    title={list.name}
+                    promoLabel={list.promo}
+                    price={list.price}
+                    rating={list.rating}
+                    sold={list.sold}
+                  />
+                </Grid>
+              )
+            })
+          }
+        </Grid>
+      </Container>
     </Layout>
-    
-
   )
 }
 
