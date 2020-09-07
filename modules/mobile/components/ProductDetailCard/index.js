@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -28,6 +28,15 @@ const useStyles = makeStyles((theme) => ({
     },
     productInfo: {
         marginTop: theme.spacing(2)
+    },
+    expand: {
+        transform: 'rotate(0deg)',
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest
+        })
+    },
+    expandedOpen: {
+        transform: 'rotate(180deg)'
     }
 }))
 
@@ -43,7 +52,13 @@ const ProductDetailCard = ({
     weight,
     promo
 }) => {
-    const classes = useStyles()
+    const classes = useStyles();
+    const [expanded, setExpanded] = useState(true);
+
+    const handleExpandedClick = () => {
+        setExpanded(!expanded);
+    }
+
     return (
         <div className={classes.container}>
             <Card>
@@ -107,6 +122,28 @@ const ProductDetailCard = ({
                         </Grid>
                     </Grid>
                 </CardContent>
+                <CardActions>
+                    <Grid container justify="center" alignItems="center">
+                        <IconButton
+                            onClick={handleExpandedClick}
+                            className={clsx(classes.expand, {
+                                [classes.expandedOpen]: expanded
+                            })}
+                        >
+                            <ExpandMoreIcon />
+                        </IconButton>
+                    </Grid>
+                </CardActions>
+                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    <CardContent>
+                        <TypoGraphy paragraph variant="subtitle2">
+                            Deskripsi
+                        </TypoGraphy>
+                        <TypoGraphy paragraph variant="body2">
+                            {description}
+                        </TypoGraphy>
+                    </CardContent>
+                </Collapse>
             </Card>
         </div>
     )
