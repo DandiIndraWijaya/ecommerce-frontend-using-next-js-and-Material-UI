@@ -8,11 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "9.4.4",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "prop-types": "latest",
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "^4.9.1",
     "clsx": "latest",
-    "@material-ui/core": "latest"
+    "next": "9.4.4",
+    "prop-types": "latest",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   }
 }

@@ -4,6 +4,12 @@
     "paths": {
       "@server/*": [
         "modules/server/*"
+      ],
+      "@common/*": [
+        "modules/common/*"
+      ],
+      "@mobile/*": [
+        "modules/mobile/*"
       ]
     }
   }
