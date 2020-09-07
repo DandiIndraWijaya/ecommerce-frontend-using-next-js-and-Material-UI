@@ -10,6 +10,9 @@
       ],
       "@mobile/*": [
         "modules/mobile/*"
+      ],
+      "@utils/*": [
+        "utils/*"
       ]
     }
   }

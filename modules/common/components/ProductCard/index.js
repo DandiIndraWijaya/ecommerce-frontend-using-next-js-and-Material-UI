@@ -12,6 +12,8 @@ import TypoGraphy from '@material-ui/core/Typography';
 import PromoLabel from '../PromoLabel/index';
 import ProductRating from '../ProductRating/index';
 
+import { currencyFormatter } from '@utils/currency';
+
 const useStyles = makeStyles({
     card: {
         maxWidth: 360
@@ -56,7 +58,7 @@ const ProductCard = ({ img, title, promoLabel, price, rating, sold, productID })
                             {title}
                         </TypoGraphy>
                         <TypoGraphy variant="overline" className={classes.price}>
-                            {price}
+                            {currencyFormatter(price)}
                         </TypoGraphy>
                         <ProductRating rating={rating} sold={sold} />
                     </Grid>
