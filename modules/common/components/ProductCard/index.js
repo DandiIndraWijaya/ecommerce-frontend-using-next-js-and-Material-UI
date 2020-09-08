@@ -14,6 +14,7 @@ import ProductRating from '../ProductRating/index';
 
 import { currencyFormatter } from '@utils/currency';
 
+
 const useStyles = makeStyles({
     card: {
         maxWidth: 360
@@ -37,34 +38,36 @@ const useStyles = makeStyles({
 const ProductCard = ({ img, title, promoLabel, price, rating, sold, productID }) => {
     const classes = useStyles()
     return (
-        <Card>
-            <div className={classes.card}>
-                <div className={classes.relative}>
-                    <CardMedia
-                        className={classes.image}
-                        image={img}
-                        title={title}
-                    />
+        <Link href="product/[id]" as={`product/${productID}`}>
+            <Card>
+                <div className={classes.card}>
+                    <div className={classes.relative}>
+                        <CardMedia
+                            className={classes.image}
+                            image={img}
+                            title={title}
+                        />
 
-                    <div className={classes.promoLabel}>
-                        <PromoLabel promoLabel={promoLabel} />
+                        <div className={classes.promoLabel}>
+                            <PromoLabel promoLabel={promoLabel} />
+                        </div>
                     </div>
-                </div>
-                
+                    
 
-                <CardContent>
-                    <Grid container direction="column">
-                        <TypoGraphy gutterBottom variant="subtitle2" component="h2">
-                            {title}
-                        </TypoGraphy>
-                        <TypoGraphy variant="overline" className={classes.price}>
-                            {currencyFormatter(price)}
-                        </TypoGraphy>
-                        <ProductRating rating={rating} sold={sold} />
-                    </Grid>
-                </CardContent>
-            </div>
-        </Card>
+                    <CardContent>
+                        <Grid container direction="column">
+                            <TypoGraphy gutterBottom variant="subtitle2" component="h2">
+                                {title}
+                            </TypoGraphy>
+                            <TypoGraphy variant="overline" className={classes.price}>
+                                {currencyFormatter(price)}
+                            </TypoGraphy>
+                            <ProductRating rating={rating} sold={sold} />
+                        </Grid>
+                    </CardContent>
+                </div>
+            </Card>
+        </Link>
     )
 }
 
