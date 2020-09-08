@@ -15,6 +15,7 @@ import TypoGraphy from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import ProductRating from '@common/components/ProductRating';
+import PromoCard from '@common/components/PromoCard';
 
 import {currencyFormatter} from '@utils/currency';
 
@@ -145,6 +146,8 @@ const ProductDetailCard = ({
                     </CardContent>
                 </Collapse>
             </Card>
+            <PromoCard promo={promo} />
+            <br></br>
         </div>
     )
 }
